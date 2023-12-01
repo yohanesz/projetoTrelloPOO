@@ -1,5 +1,3 @@
-package projetoTrelloPOO;
-
 import java.util.Date;
 import java.time.LocalDate;
 
@@ -10,6 +8,8 @@ public class Card {
 	private LocalDate dataEntrega;
 	private Date horaEntrega;
 	
+
+	//construtor
 	public Card(String tituloCard, LocalDate dataInicial, LocalDate dataEntrega, Date horaEntrega ) {
 			
 		this.tituloCard = tituloCard;
@@ -19,6 +19,7 @@ public class Card {
 	}
 	
 	
+	//getters and setters
 	public String getTituloCard() {
 		return tituloCard;
 	}
