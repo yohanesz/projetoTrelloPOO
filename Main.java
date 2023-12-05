@@ -17,6 +17,7 @@ public class Main {
 		int var = 0;
 		// int var2 = 0;
 		boolean verificador = true;
+		boolean verificadorLogin = true;
 
 		Scanner scanner = new Scanner(System.in);
 		Formatacao fmt = new Formatacao();
@@ -24,22 +25,38 @@ public class Main {
 	 	// Registrar usuários
 	 	sistema.registrarUsuario("admin", "admin");
 
-	 	// Autenticar usuário
-		fmt.linha();
-		System.out.print("Digite o nome de usuário: ");
-		String nomeUsuario = scanner.nextLine();
+		do {
 
-	 	System.out.print("Digite a senha: ");
-	 	String senhaUsuario = scanner.nextLine();
-		fmt.linha();
-
-
-		if (sistema.autenticarUsuario(nomeUsuario, senhaUsuario)) {
 			sistema.limparConsole();
 			fmt.linha();
-			System.out.println("Login bem-sucedido!");
+			System.out.print("Digite o nome de usuário: ");
+			String nomeUsuario = scanner.nextLine();
+	
+			 System.out.print("Digite a senha: ");
+			 String senhaUsuario = scanner.nextLine();
 			fmt.linha();
-			scanner.nextLine();
+
+			if (sistema.autenticarUsuario(nomeUsuario, senhaUsuario)) {
+				verificadorLogin = false;
+				sistema.limparConsole();
+				fmt.linha();
+				System.out.println("Login bem-sucedido!");
+				fmt.linha();
+				scanner.nextLine();
+
+			} else {
+
+				sistema.limparConsole();
+				fmt.linha();
+				System.out.println("Falha no login. Credenciais inválidas.");
+				fmt.linha();
+				scanner.nextLine();
+			}
+
+
+		}while (verificadorLogin);
+	 	// Autenticar usuário
+
 
 			do { 
 				sistema.limparConsole();
@@ -248,10 +265,6 @@ public class Main {
 					}	
 	
 			} while (var != 4);
-
-			} else { 
-				System.out.println("Falha no login. Credenciais inválidas."); 
-			}
 
 	 	scanner.close();
 
